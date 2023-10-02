@@ -17,7 +17,6 @@ const Home = () => {
             }
         });
         response = await response.json();
-        // console.log(response[0],response[1]);
         setFoodItem(response[0]);
         setFoodCat(response[1]);
     }
@@ -36,7 +35,6 @@ const Home = () => {
                                 <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" value={search} onChange={(e) => {
                                     setSearch(e.target.value)
                                 }} />
-                                {/* <button className="btn btn-outline-success text-white bg-success" type="submit">Search</button> */}
                             </div>
                         </div>
                         <div className="carousel-item active">

@@ -15,6 +15,13 @@ app.use(express.json());
 app.use('/api',require("./Routes/CreateUser"))
 app.use('/api',require("./Routes/DisplayData"))
 app.use('/api',require("./Routes/OrderData"))
+if(process.env.NODE_ENV=='production'){
+const path=require('path')
+app.get('/',(req,res)=>{
+    app.use(express.static(path.resolve(__dirname,'Frontend','build')))
+    res.sendFile(path.resolve(__dirname,'Frontend','build','index.html'))
+})
+}
 app.listen(port,()=>{
     console.log(`arsh listen port ${port}`)
 })

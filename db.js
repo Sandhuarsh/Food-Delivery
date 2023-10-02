@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const mongoURI = "mongodb+srv://sandhuarshpreet123:Arsh123@cluster1.smnxgcf.mongodb.net/gofood?retryWrites=true&w=majority";
+const {mongoURI} = require('./config/keys');
 
 const mongoDB =async()=>{
    try{ await mongoose.connect(mongoURI);
