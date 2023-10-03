@@ -2,6 +2,7 @@ const express=require('express');
 const app =express();
 const port =5000;
 const mongoDB=require('./db');
+const path=require('path');
 mongoDB();
 app.use((req,res,next)=>{
     res.setHeader("Access-Control-Allow-Origin","http://localhost:3000");
@@ -12,16 +13,13 @@ app.use((req,res,next)=>{
     next();
 })
 app.use(express.json());
-app.use('/api',require("./Routes/CreateUser"))
-app.use('/api',require("./Routes/DisplayData"))
-app.use('/api',require("./Routes/OrderData"))
-if(process.env.NODE_ENV=='production'){
-const path=require('path')
-app.get('/',(req,res)=>{
-    app.use(express.static(path.resolve(__dirname,'Frontend','build')))
-    res.sendFile(path.resolve(__dirname,'Frontend','build','index.html'))
-})
-}
+app.use('/api',require("./Routes/CreateUser"));
+app.use('/api',require("./Routes/DisplayData"));
+app.use('/api',require("./Routes/OrderData"));
+app.use(express.static(path.join(__dirname,'./Frontend/build')));
+app.get('*',function(req,res){
+    res.sendFile(path.join(__dirname,'./Frontend/build/index.html'));
+});
 app.listen(port,()=>{
     console.log(`arsh listen port ${port}`)
 })
