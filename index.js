@@ -13,8 +13,6 @@ app.use((req,res,next)=>{
     next();
 })
 app.use(express.json());
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use('/api',require("./Routes/CreateUser"));
 app.use('/api',require("./Routes/DisplayData"));
