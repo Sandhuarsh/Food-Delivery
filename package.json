@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "npm start",
+    "server": "nodemon start",
+    "Frontend":"npm start --prefix Frontend",
+    "dev":"concurrently \"npm start\" \"npm run Frontend\" ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "end to end",
@@ -13,6 +15,10 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "express": "^4.18.2",
+    "concurrently": "^8.2.2",
+    "cors": "^2.8.5",
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.4.1",
     "express-validator": "^7.0.1",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.5.0"
